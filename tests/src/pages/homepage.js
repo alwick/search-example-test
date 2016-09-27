@@ -3,16 +3,17 @@ module.exports = {
     return this.client
       .url('http://www.allan.com:8080')
       .waitForElementVisible('body', 1000)
-      .assert.title('CXID Login');
+      .assert.title('Wickidcool Table Sorting Example');
   },
 
   search: function (query) {
     return this.client
       .assert.visible('input[type=text]')
       .setValue('input[type=text]', query)
-      .waitForElementVisible('input[name=go]', 1000)
-      .click('input[name=go]')
-      .pause(1000);
+      .waitForElementVisible('button[name=go]', 1000)
+      .click('button[name=go]')
+      .waitForElementVisible('li[class=list-group-item]', 1000)
+      .assert.containsText('li[class=list-group-item]','Allan');
   }
 };
 
